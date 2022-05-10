@@ -20,11 +20,10 @@ def payload():
 def graf():
     now = datetime.datetime.now()
     now = str(now.year)+str(now.month)+str(now.day)+str(now.hour)+str(now.minute)+str(now.second)
-    show(now) 
-    return render_template('imagen.html', image='static/images/'+now+'.jpg')
+    if (show(now) !=None):
+        return render_template('imagen.html', image='static/images/'+now+'.jpg')
+    else:
+        return 'No hay datos'
 
-@app.route('/sendEmail/', methods=['POST'])
-def send_email():
-    pass
 
 app.run(debug=True, port=2250)
